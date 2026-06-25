@@ -1,0 +1,8 @@
+[package]
+name = "price-pulse-vara-sketch"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+sails-rs = "0.10.3"

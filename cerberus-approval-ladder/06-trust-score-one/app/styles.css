@@ -1,0 +1,65 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f3f0f7;
+  color: #21172a;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+main {
+  width: min(1040px, calc(100vw - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 32px 0;
+}
+
+.scoreboard {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 0.8fr);
+  border: 1px solid #d8cce4;
+  background: white;
+}
+
+.scoreboard > div {
+  padding: clamp(24px, 5vw, 56px);
+}
+
+.scoreboard > div:first-child {
+  border-right: 1px solid #d8cce4;
+}
+
+.eyebrow,
+label {
+  color: #665476;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 12ch;
+  margin: 8px 0 0;
+  font-size: clamp(2.3rem, 8vw, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.score {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+  background: #fbf8ff;
+}
+
+input { width: 100%; }
+strong { font-size: clamp(4rem, 12vw, 8rem); line-height: 0.9; }
+p { margin: 0; line-height: 1.55; }
+
+@media (max-width: 760px) {
+  .scoreboard { grid-template-columns: 1fr; }
+  .scoreboard > div:first-child { border-right: 0; border-bottom: 1px solid #d8cce4; }
+}

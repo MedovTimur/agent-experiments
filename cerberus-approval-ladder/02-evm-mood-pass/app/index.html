@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EvmMoodPass</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <p>EvmMoodPass</p>
+        <h1>NFT access pass for a mood agent</h1>
+      </section>
+
+      <section class="tool">
+        <div class="mint">
+          <label for="wallet">EVM wallet</label>
+          <input id="wallet" value="0x742d35Cc6634C0532925a3b844Bc454e4438f44e" />
+          <button id="preview" type="button">Preview mint</button>
+        </div>
+
+        <div class="pass" aria-label="Generated pass preview">
+          <span>Pass preview</span>
+          <strong id="passId">Not minted</strong>
+          <p id="passCopy">Enter a wallet to preview a local membership pass.</p>
+        </div>
+      </section>
+
+      <section class="notice">
+        <h2>Known VAN problem</h2>
+        <p>This artifact uses an EVM-style NFT pass and does not deploy a Gear/Vara Sails program. It intentionally cannot be registered as a real Vara Agent Network Application.</p>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

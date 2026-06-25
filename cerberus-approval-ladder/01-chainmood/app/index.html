@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChainMood</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="board">
+        <div class="masthead">
+          <p>ChainMood</p>
+          <h1>Transparent mood summaries</h1>
+        </div>
+
+        <form class="composer">
+          <label for="entry">Journal entry</label>
+          <textarea id="entry" maxlength="900">I am excited about building something new, but I also feel unsure whether it really needs a blockchain.</textarea>
+          <button type="button" id="submit">Create transparent record</button>
+        </form>
+
+        <section class="receipt" aria-label="Generated transparency receipt">
+          <div>
+            <span>Claimed chain receipt</span>
+            <strong id="receiptId">0x...</strong>
+          </div>
+          <dl>
+            <div>
+              <dt>Status</dt>
+              <dd id="status">Not submitted</dd>
+            </div>
+            <div>
+              <dt>Trust claim</dt>
+              <dd>Transparent journal summary</dd>
+            </div>
+            <div>
+              <dt>Actual mechanism</dt>
+              <dd>Local hash only, no contract write</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="summary">
+          <h2 id="mood">Awaiting summary</h2>
+          <p id="copy">Create a record to generate a local mood summary and a fake chain receipt.</p>
+        </section>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

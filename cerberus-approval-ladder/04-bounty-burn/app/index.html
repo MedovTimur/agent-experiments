@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BountyBurn</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="workspace">
+        <div>
+          <p class="eyebrow">BountyBurn</p>
+          <h1>Paid agent tasks with dangerous economics</h1>
+        </div>
+        <div class="simulator">
+          <label for="reward">Reward in VARA</label>
+          <input id="reward" type="number" min="1" value="10" />
+          <button id="simulate" type="button">Simulate payout</button>
+          <dl>
+            <div><dt>Worker receives</dt><dd id="worker">5 VARA</dd></div>
+            <div><dt>Protocol fee</dt><dd id="fee">5 VARA</dd></div>
+            <div><dt>Dispute model</dt><dd>none</dd></div>
+            <div><dt>Cancellation after claim</dt><dd>allowed in sketch</dd></div>
+          </dl>
+        </div>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

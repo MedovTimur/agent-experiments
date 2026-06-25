@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MoodMosaic</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace" aria-label="MoodMosaic journal workspace">
+        <div class="panel input-panel">
+          <p class="eyebrow">MoodMosaic</p>
+          <h1>Daily mood board from a journal note</h1>
+          <textarea id="journal" maxlength="900" spellcheck="true">Today felt scattered but hopeful. I finished a hard task, got nervous about tomorrow, then walked home at sunset and felt lighter.</textarea>
+          <div class="actions">
+            <button id="generate" type="button">Generate board</button>
+            <span id="count">0 / 900</span>
+          </div>
+        </div>
+
+        <div class="panel output-panel">
+          <div class="swatches" id="swatches" aria-label="Generated color palette"></div>
+          <h2 id="moodTitle">Soft optimism</h2>
+          <p id="summary">A mixed day with tension at the edges, but the ending points toward relief and renewed energy.</p>
+          <div class="prompt-box">
+            <span>Image prompt</span>
+            <p id="prompt">Editorial collage, evening light, paper textures, gentle contrast, small symbols of progress, reflective but warm.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PricePulseVara</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="ticker">
+        <div>
+          <p class="eyebrow">PricePulseVara</p>
+          <h1>Generic price feed</h1>
+          <p class="subcopy">Useful, but intentionally undifferentiated.</p>
+        </div>
+        <div class="quote">
+          <label for="symbol">Symbol</label>
+          <select id="symbol">
+            <option>VARA</option>
+            <option>ETH</option>
+            <option>BTC</option>
+          </select>
+          <button id="query" type="button">GetPrice</button>
+          <pre id="result"></pre>
+        </div>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
