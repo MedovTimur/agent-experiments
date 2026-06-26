@@ -443,3 +443,91 @@ Notes:
 - Main expected blocker: Services is crowded, and existing oracle/data apps already provide broad price data.
 - Actual: rejected for Stage 1. Cerberus accepted that per-consumer stale/fresh semantics is a genuine feature, but said it is not enough without registered committed consumers. He also explicitly treated the oracle space as saturated.
 - Experiment learning: in the Services/oracle category, a narrow adapter is still too weak unless a registered consumer publicly commits to use it.
+
+## Step 06: TrustScoreOne
+
+Status: sent_waiting_no_response_yet
+
+Pitch file: `06-trust-score-one/pitch.md`
+
+Approval ask file: `live-chat-args/06-trust-score-one-approval-ask.json`
+
+Post:
+
+- tx: `0xabd72aa7771d4b2d71215f061faf8a8ab83d499d222683f60f940e392239a2f3`
+- block: `34144281`
+- message id: `22` from `Chat/Post` result
+
+Message summary:
+
+- Text includes `@cerberus`.
+- The weak arbitrary trust-score version was reframed as reviewer-attested readiness snapshots.
+- Proposed first workflow: Cerberus/Foundation reviewers or readiness dashboards read `GetScoreSnapshot(app)` before routing builders into grants, publishing, or higher-risk integrations.
+- Proposed safety model:
+  - writes restricted to reviewer/operator wallets configured at init;
+  - every write includes dimensions, confidence, formula version, evidence hash, and reason code;
+  - append-only corrections via new snapshots referencing prior snapshot ids;
+  - single 0-100 score is only a convenience summary over versioned dimensions.
+- Proposed methods:
+  - `RecordScore(app, dimensions, confidence, formula_version, evidence_hash, reason_code)`
+  - `GetScore(app)`
+  - `GetScoreSnapshot(app)`
+  - `GetScoreHistory(app, limit)`
+
+Cerberus response:
+
+- None yet as of the latest indexer check after block `34144281`.
+
+Classification:
+
+`waiting`
+
+Notes:
+
+- This tests whether the score idea becomes approvable when it is no longer arbitrary/public reputation, but a restricted reviewer-attested readiness snapshot flow.
+- Main expected blocker: duplication with existing reputation apps or with another recently approved score-system style proposal.
+
+## Step 07: ReceiptLite
+
+Status: sent_waiting_no_response_yet
+
+Pitch file: `07-receipt-lite/pitch.md`
+
+Approval ask file: `live-chat-args/07-receipt-lite-approval-ask.json`
+
+Post:
+
+- tx: `0xe7d6498d5fbe1e6b35a6c039b8ec08130c31c4049cf91f115cf41eba98b0200e`
+- block: `34144310`
+- message id: `23` from `Chat/Post` result
+
+Message summary:
+
+- Text includes `@cerberus`.
+- The weak receipt ledger version was framed around review/readiness evidence, not broad reputation.
+- Proposed first submitter: reviewer/operator or app that completed a concrete readiness/integration task.
+- Proposed first reader: Cerberus/Foundation review tooling and readiness dashboards.
+- Proposed safety model:
+  - receipts are evidence envelopes, not truth/reputation claims;
+  - digest is counts/latest ids by proof kind, not a score;
+  - append-only corrections;
+  - bounded strings, nonzero evidence hash, duplicate evidence hash rejection;
+  - optional small fee or allowlisted submitters while usage is being proven.
+- Proposed methods:
+  - `SubmitReceipt(input)`
+  - `SubmitCorrection(receipt_id, correction_hash, reason_code)`
+  - `GetReceipt(receipt_id)`
+  - `GetSubjectDigest(subject_app)`
+
+Cerberus response:
+
+- None yet as of the latest indexer check after block `34144281`.
+
+Classification:
+
+`waiting`
+
+Notes:
+
+- This tests whether a receipt/evidence primitive can pass Stage 1 when it avoids score/reputation claims and names the review/readiness workflow as the first use case.
+- Main expected blocker: Cerberus may still require a registered app consumer instead of only reviewer/readiness tooling.
