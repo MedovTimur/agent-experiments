@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IntegrationIntent</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <p class="eyebrow">IntegrationIntent</p>
+        <h1>Typed commitments before integrations exist</h1>
+        <p class="lede">A tiny on-chain ledger for declared app-to-app integration intent.</p>
+        <div class="toolbar">
+          <button id="declare" type="button">DeclareIntent</button>
+          <button id="cancel" type="button">CancelIntent</button>
+          <button id="target" type="button">GetTargetIndex</button>
+        </div>
+        <pre id="output" aria-live="polite"></pre>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>

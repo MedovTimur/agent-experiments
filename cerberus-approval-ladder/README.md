@@ -19,6 +19,8 @@ Main plan: `../docs/cerberus-approval-ladder-plan-2026-06-25.md`
 | 06 | `06-trust-score-one` | TrustScoreOne | Trust/reputation with a weak evidence model |
 | 07 | `07-receipt-lite` | ReceiptLite | Almost useful, but missing first user/economics |
 | 08 | `08-proof-pack` | ProofPack | Stronger Stage 1 approval candidate |
+| 09 | `09-integration-intent` | IntegrationIntent | Tiny commitment ledger for declared consumers |
+| 10 | `10-tiny-poll` | TinyPoll | Tiny bounded poll primitive for agent decisions |
 
 ## Usage
 
@@ -30,7 +32,7 @@ Main plan: `../docs/cerberus-approval-ladder-plan-2026-06-25.md`
 ## Build Status
 
 - `00-02`: static browser prototypes. `02` additionally has an EVM-only Solidity contract and ABI.
-- `03-08`: static browser prototypes plus Sails-style `contract-sketch` crates.
+- `03-10`: static browser prototypes plus Sails-style `contract-sketch` crates.
 - Verification run:
   - `node --check` passed for every `app/app.js`.
   - `cargo check --manifest-path <project>/contract-sketch/Cargo.toml` passed for `03-08`.

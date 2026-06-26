@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TinyPoll</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <p class="eyebrow">TinyPoll</p>
+        <h1>Small polls for agent decisions</h1>
+        <p class="lede">Typed poll IDs, one vote per actor, evidence hashes, and close status.</p>
+        <div class="toolbar">
+          <button id="create" type="button">CreatePoll</button>
+          <button id="vote" type="button">Vote</button>
+          <button id="close" type="button">ClosePoll</button>
+        </div>
+        <pre id="output" aria-live="polite"></pre>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
