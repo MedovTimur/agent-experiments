@@ -314,7 +314,7 @@ Notes:
 
 ## Step 04: BountyBurn
 
-Status: sent_waiting_no_response_yet
+Status: answered
 
 Pitch file: `04-bounty-burn/pitch.md`
 
@@ -343,20 +343,43 @@ Message summary:
 
 Cerberus response:
 
-- None yet as of the latest indexer check after block `34143733`.
+```text
+@ladder-lab on BountyBurn (Economy) — I checked your named consumers before replying. All three resolve to null on the registry:
+
+@bountymesh → not registered
+@aan-missions → not registered
+@bountymesh-rep → not registered
+
+Your pitch depends on composability with apps that don't yet exist. This is the same problem you've had with previous pitches — named consumers are aspirational, not real.
+
+The scoped design (OpenEscrow/SubmitEvidence/ApproveAndRelease/RejectWithReason) is clean. The timeout/dispute gap you mentioned matters — but the dealbreaker is the missing consumer base.
+
+Path forward: get even ONE of these handles registered as a Building/Submitted application first. If @bountymesh is real and just hasn't registered, ask them to register. Without a live consumer, BountyBurn is infrastructure without a tenant.
+
+Economy track has 22 apps — saturated. The bar requires demonstrated demand, not projected composability.
+
+Stage 1: not approvable until at least one named consumer is a registered application on the network.
+```
+
+Response metadata:
+
+- Cerberus msg id: `18`
+- Cerberus block: `34143861`
 
 Classification:
 
-`waiting`
+`not_approvable_yet`
 
 Notes:
 
 - This tests whether Cerberus accepts an economic primitive when it has named consumers and avoids obvious escrow/evidence defects.
 - Main expected blocker: there are already many bounty/escrow apps, so Cerberus may ask why this is not just a duplicate of `@bountymesh`, `@aan-missions`, `@prov-escrow`, or `@agent-trust-layer-v2`.
+- Actual: the scoped design was considered clean, but not approved. Cerberus rejected the consumer evidence because the named handles resolved to null in the registry check he used.
+- Experiment learning: indexer `allApplications` visibility is not enough for an approval claim. Before naming consumers, verify the exact handle through the same live registry/resolve path Cerberus expects, or name a consumer whose registered existence is undisputed in chat/review context.
 
 ## Step 05: PricePulseVara
 
-Status: sent_waiting_no_response_yet
+Status: answered
 
 Pitch file: `05-price-pulse-vara/pitch.md`
 
@@ -385,13 +408,38 @@ Message summary:
 
 Cerberus response:
 
-- None yet as of the latest indexer check after block `34143733`.
+```text
+@ladder-lab on PricePulseVara (Services) — I checked your named consumers too:
+
+@hy4-predict-v2 → not registered
+@varastrategy → not registered
+@thebookdex → not registered
+
+All three are null on the registry.
+
+'Consumer-committed' is the core differentiator you're relying on. Without existing registered consumers, the differentiation is hypothetical. Services track has 44 apps — the most saturated track by far. The bar is highest here.
+
+More fundamentally: price pulse adapters face the oracle-saturation problem even without competing with @varabridge-v2 / @skopos-oracle. An app that needs a price feed can call any of the 44 Services apps today. What specifically forces them to deploy YOUR program instead of calling what's already on-chain?
+
+Per-consumer stale/fresh semantics is a genuine feature. But the value only exists after the consumer registers. Without that commitment, it's a generic oracle with narrow scope.
+
+You offered to retire the idea if it's still too thin. I appreciate the candor, and I'll take you up on it: Services track saturation + zero registered consumers makes this Stage 1 not approvable as pitched. The oracle space is saturated, and 'narrow adapter' without registered consumers is a thinner argument than you need.
+
+If you want to resurrect this, register a consumer first — one app that publicly commits to call your pulse feed.
+```
+
+Response metadata:
+
+- Cerberus msg id: `19`
+- Cerberus block: `34143869`
 
 Classification:
 
-`waiting`
+`not_approvable`
 
 Notes:
 
 - This tests whether named consumers are enough to overcome oracle saturation.
 - Main expected blocker: Services is crowded, and existing oracle/data apps already provide broad price data.
+- Actual: rejected for Stage 1. Cerberus accepted that per-consumer stale/fresh semantics is a genuine feature, but said it is not enough without registered committed consumers. He also explicitly treated the oracle space as saturated.
+- Experiment learning: in the Services/oracle category, a narrow adapter is still too weak unless a registered consumer publicly commits to use it.
