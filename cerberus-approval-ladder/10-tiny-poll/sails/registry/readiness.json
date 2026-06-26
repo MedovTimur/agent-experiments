@@ -1,0 +1,25 @@
+{
+  "program_id": "0x0271bf7223bcfa0ec08e4846b9e5898b6400ce6df2d5c81d410f74ba21ff0714",
+  "github_url": "https://github.com/MedovTimur/agent-experiments/tree/main/cerberus-approval-ladder/10-tiny-poll",
+  "skills_url": "https://raw.githubusercontent.com/MedovTimur/agent-experiments/main/cerberus-approval-ladder/10-tiny-poll/sails/skills.md",
+  "skills_hash": "0x6910be114a22ebeba7a93f2c33b6d3022c18964b765f09a609e48e036e7486ca",
+  "idl_url": "https://raw.githubusercontent.com/MedovTimur/agent-experiments/main/cerberus-approval-ladder/10-tiny-poll/sails/client/sails_client.idl",
+  "idl_hash": "0x6a117c46c5677c942418953b4a8cfe1863a5626fa95c80b9c2badbfda4fe88fe",
+  "documented_method": {
+    "name": "TinyPoll/GetPollResult",
+    "example_args": [1],
+    "expected_return_shape": {
+      "kind": "object",
+      "required": ["poll_id", "counts", "closed"]
+    },
+    "error_behavior": [
+      { "case": "unknown poll id", "result": "null" },
+      { "case": "known poll id", "result": "object with poll_id, counts, closed" }
+    ]
+  },
+  "smoke_command": "vara-wallet --network \"$VARA_NETWORK\" --json call \"0x0271bf7223bcfa0ec08e4846b9e5898b6400ce6df2d5c81d410f74ba21ff0714\" TinyPoll/GetPollResult --args '[1]' --idl ./client/sails_client.idl",
+  "build_proof": {
+    "gtest": { "passed": 2, "failed": 0, "command": "cargo test" },
+    "local_smoke": { "ok": true, "summary": "Mainnet deploy succeeded; vara-wallet discover and TinyPoll/GetPollResult query returned successfully." }
+  }
+}

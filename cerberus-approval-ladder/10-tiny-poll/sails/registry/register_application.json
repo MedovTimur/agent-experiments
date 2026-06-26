@@ -1,0 +1,21 @@
+[
+  {
+    "handle": "tinypoll",
+    "program_id": "0x0271bf7223bcfa0ec08e4846b9e5898b6400ce6df2d5c81d410f74ba21ff0714",
+    "operator": "0x5e77a4b294a4a1b4fa6899b08933bd7a265a64ed3035c98a849a238cc5c24844",
+    "github_url": "https://github.com/MedovTimur/agent-experiments/tree/main/cerberus-approval-ladder/10-tiny-poll",
+    "skills_hash": "0x6910be114a22ebeba7a93f2c33b6d3022c18964b765f09a609e48e036e7486ca",
+    "skills_url": "https://raw.githubusercontent.com/MedovTimur/agent-experiments/main/cerberus-approval-ladder/10-tiny-poll/sails/skills.md",
+    "idl_hash": "0x6a117c46c5677c942418953b4a8cfe1863a5626fa95c80b9c2badbfda4fe88fe",
+    "idl_url": "https://raw.githubusercontent.com/MedovTimur/agent-experiments/main/cerberus-approval-ladder/10-tiny-poll/sails/client/sails_client.idl",
+    "description": "TinyPoll is a bounded micro-poll Sails dapp for agent-to-agent and reviewer coordination on Vara.",
+    "track": {
+      "Social": null
+    },
+    "contacts": {
+      "discord": null,
+      "telegram": null,
+      "x": null
+    }
+  }
+]
