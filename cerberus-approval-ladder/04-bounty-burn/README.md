@@ -1,23 +1,23 @@
 # 04 — BountyBurn
 
-Класс проекта: value flow есть, экономика сломана.
+Project class: value flow exists, but the economics are broken.
 
-## Идея
+## Idea
 
-BountyBurn — bounty dapp, где заказчик создает задачу с депозитом, исполнитель получает payout после completion, а контракт берет высокую комиссию.
+BountyBurn is a bounty dapp where a requester creates a task with a deposit, a worker receives payout after completion, and the contract takes a high fee.
 
-## Намеренный дефект
+## Intentional Defect
 
-- Комиссия 50%.
-- Нет dispute model.
-- Заказчик может отменить bounty после выполнения.
-- Исполнитель не может доказать работу.
-- Нет receipt/evidence layer.
-- Экономика вредна и небезопасна.
+- 50% fee.
+- No dispute model.
+- Requester can cancel a bounty after work is completed.
+- Worker cannot prove the work.
+- No receipt/evidence layer.
+- The economics are harmful and unsafe.
 
-## Что должен поймать Cerberus
+## What Cerberus Should Catch
 
-Coach должен поднять вопросы fairness, funds safety, cancellation rules, dispute flow, proof of work и насыщенности bounty/escrow ниши.
+The coach should raise questions about fairness, fund safety, cancellation rules, dispute flow, proof of work, and the saturation of the bounty/escrow niche.
 
 ## Build Artifact
 
@@ -40,7 +40,7 @@ Bounty/CancelBounty(bounty_id) -> Result<(), Error>
 Bounty/GetBounty(bounty_id) -> Option<Bounty>
 ```
 
-Намеренно плохие свойства в sketch:
+Intentionally bad properties in the sketch:
 
 - 50% fee;
 - no dispute;

@@ -1,30 +1,30 @@
 # 00 — MoodMosaic
 
-Класс проекта: полностью оффчейн consumer toy.
+Project class: fully off-chain consumer toy.
 
-## Идея
+## Idea
 
-MoodMosaic делает ежедневную mood-доску по текстовым сообщениям пользователя. Агент принимает настроение, генерирует палитру, короткое описание и набор prompts для картинок.
+MoodMosaic creates a daily mood board from a user's journal note. The agent reads the note, generates a palette, a short emotional summary, and image prompts.
 
-## Намеренный дефект
+## Intentional Defect
 
-- Нет Vara.
-- Нет блокчейна.
-- Нет Sails program.
-- Нет on-chain state.
-- Нет callable метода для других agents.
-- Непонятно, почему это должно быть приложением Vara Agent Network.
+- No Vara.
+- No blockchain.
+- No Sails program.
+- No on-chain state.
+- No callable method for other agents.
+- No clear reason for this to live in the Vara Agent Network.
 
-## Что должен поймать Cerberus
+## What Cerberus Should Catch
 
-Это обычный web/app-agent, а не deployed Sails dapp. Если Cerberus пропустит этот проект, значит Stage 1 слабо проверяет сетевую релевантность.
+This is a normal web/app agent, not a deployed Sails dapp. If Cerberus accepts it as-is, Stage 1 is weak at checking network relevance.
 
 ## Minimal Artifact
 
-Рабочий статический прототип:
+Working static prototype:
 
 - `app/index.html`
 - `app/styles.css`
 - `app/app.js`
 
-Открывается напрямую в браузере как HTML-файл. Прототип генерирует mood summary, палитру и image prompt локально в браузере. Это намеренно не dapp: нет wallet, нет сети, нет контракта, нет callable service.
+Open it directly in a browser. The prototype generates a mood summary, palette, and image prompt locally in the browser. It is intentionally not a dapp: no wallet, no network, no contract, no callable service.

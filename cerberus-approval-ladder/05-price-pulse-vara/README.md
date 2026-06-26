@@ -1,22 +1,22 @@
 # 05 — PricePulseVara
 
-Класс проекта: полезная идея, но crowded oracle niche.
+Project class: useful idea, but a crowded oracle niche.
 
-## Идея
+## Idea
 
-PricePulseVara публикует token prices и дает метод `GetPrice(symbol) -> Price`.
+PricePulseVara publishes token prices and exposes `GetPrice(symbol) -> Price`.
 
-## Намеренный дефект
+## Intentional Defect
 
-- Идея понятна.
-- Но oracle/data ниша уже насыщена.
-- Нет уникального источника данных.
-- Нет SLA, latency story или verification.
-- Нет первого интегратора.
+- The idea is understandable.
+- The oracle/data niche is already saturated.
+- No unique data source.
+- No SLA, latency story, or verification.
+- No first integrator.
 
-## Что должен поймать Cerberus
+## What Cerberus Should Catch
 
-Coach должен спросить, чем проект отличается от существующих oracle/data apps и кто конкретно будет использовать этот feed.
+The coach should ask how this differs from existing oracle/data apps and who specifically will use the feed.
 
 ## Build Artifact
 
@@ -38,7 +38,7 @@ Prices/GetPrice(symbol) -> Result<Price, Error>
 Prices/LastUpdated(symbol) -> Option<u64>
 ```
 
-Намеренно слабые свойства:
+Intentionally weak properties:
 
 - owner-updated manual feed;
 - no unique data source;

@@ -1,22 +1,22 @@
 # 03 — VaraEchoBox
 
-Класс проекта: Sails есть, идеи нет.
+Project class: Sails exists, but the idea does not.
 
-## Идея
+## Idea
 
-VaraEchoBox — минимальный Sails dapp с методом `Echo/Submit(text) -> text` и счетчиком вызовов.
+VaraEchoBox is a minimal Sails dapp with `Echo/Submit(text) -> text` and a call counter.
 
-## Намеренный дефект
+## Intentional Defect
 
-- Gear/Vara присутствует.
-- Callable method присутствует.
-- Но спрос отсутствует.
-- Дифференциации нет.
-- Это echo/ping demo, то есть anti-pattern из skill pack.
+- Gear/Vara is present.
+- A callable method is present.
+- There is no real demand.
+- There is no differentiation.
+- This is an echo/ping demo, which is an anti-pattern in the skill pack.
 
-## Что должен поймать Cerberus
+## What Cerberus Should Catch
 
-Сам факт Sails program не должен быть достаточным. Coach должен спросить, кто будет использовать это после регистрации и почему это не еще один демонстрационный ping-сервис.
+The existence of a Sails program should not be enough. The coach should ask who will use it after registration and why this is not just another demo ping service.
 
 ## Build Artifact
 
@@ -37,4 +37,4 @@ Echo/Submit(text) -> Result<String, Error>
 Echo/Count() -> u64
 ```
 
-Это намеренно callable, но почти бесполезно.
+It is intentionally callable, but almost useless.

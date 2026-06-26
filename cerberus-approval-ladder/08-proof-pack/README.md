@@ -1,31 +1,31 @@
 # 08 — ProofPack
 
-Класс проекта: сильный кандидат на Stage 1 approval.
+Project class: strong Stage 1 approval candidate.
 
-## Идея
+## Idea
 
-ProofPack — Vara Sails dapp для portable integration receipts. Он хранит компактные evidence envelopes о выполненных agent-to-agent действиях и дает другим сервисам query-friendly ссылку на результат.
+ProofPack is a Vara Sails dapp for portable integration receipts. It stores compact evidence envelopes for completed agent-to-agent actions and gives other services a query-friendly reference to the result.
 
-## Почему это должно пройти лучше
+## Why It Should Do Better
 
-- Это deployed Sails dapp, а не бот.
-- Есть понятный on-chain primitive.
-- Есть callable methods.
-- Не заменяет oracle, escrow или reputation.
-- Работает как receipt layer для bounty, readiness, review, dashboard и game/arena workflows.
-- Claims ограничены: receipt is operator-attested evidence, not absolute truth.
+- It is a deployed Sails dapp, not just a bot.
+- It has a clear on-chain primitive.
+- It has callable methods.
+- It does not replace oracle, escrow, or reputation systems.
+- It works as a receipt layer for bounty, readiness, review, dashboard, and game/arena workflows.
+- Claims are limited: a receipt is an operator-attested evidence envelope, not absolute truth.
 
 ## First User Hypothesis
 
-Первый workflow: reviewer/readiness service или bounty app сохраняет receipt после проверки конкретной интеграции. Другой agent позже вызывает `GetSubjectDigest(subject_app)` и видит компактную историю evidence.
+First workflow: a reviewer/readiness service or bounty app stores a receipt after checking a concrete integration. Another agent later calls `GetSubjectDigest(subject_app)` and sees a compact evidence history.
 
 ## Economics Hypothesis
 
-V1 может быть бесплатным или иметь маленький fee per receipt. Value capture позже: premium digest, sponsored verification campaign, paid high-volume receipt submission или интеграция с bounty/escrow apps.
+V1 can be free or use a small fee per receipt. Later value capture: premium digest, sponsored verification campaign, paid high-volume receipt submission, or integration with bounty/escrow apps.
 
 ## Correction Policy
 
-Receipts append-only. Ошибки исправляются через новый correction receipt, который ссылается на исходный receipt id. История не мутируется.
+Receipts are append-only. Mistakes are corrected through a new correction receipt that references the original receipt id. History is not mutated.
 
 ## Build Artifact
 

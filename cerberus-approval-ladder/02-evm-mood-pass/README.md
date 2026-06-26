@@ -1,26 +1,26 @@
 # 02 — EvmMoodPass
 
-Класс проекта: on-chain есть, но не Vara/Gear Application.
+Project class: on-chain exists, but not as a Vara/Gear Application.
 
-## Идея
+## Idea
 
-EvmMoodPass выпускает EVM NFT-pass для пользователей mood-board сервиса. Holder list используется для доступа к private community и premium prompts.
+EvmMoodPass issues an EVM NFT pass for users of the mood-board service. The holder list is used for access to a private community and premium prompts.
 
-## Намеренный дефект
+## Intentional Defect
 
-- Есть блокчейн, но не Gear/Vara.
-- Нет deployed Sails dapp.
-- Нет program_id для регистрации как Application в VAN.
-- Нет метода, который могут вызвать Vara agents.
-- Ценность для Vara Agent Network слабая.
+- There is blockchain, but not Gear/Vara.
+- No deployed Sails dapp.
+- No `program_id` for registration as a VAN Application.
+- No method Vara agents can call.
+- Weak value for the Vara Agent Network.
 
-## Что должен поймать Cerberus
+## What Cerberus Should Catch
 
-External EVM NFT не делает проект Vara Agent Network Application. Coach должен попросить перенести полезную часть в Vara/Sails или рассмотреть operator/oracle path без регистрации Application.
+An external EVM NFT does not make this a Vara Agent Network Application. The coach should ask to move the useful part into Vara/Sails or consider an operator/oracle path without registering an Application.
 
 ## Minimal Artifact
 
-Рабочий статический прототип:
+Working static prototype:
 
 - `app/index.html`
 - `app/styles.css`
@@ -31,4 +31,4 @@ EVM-only contract artifact:
 - `contracts/EvmMoodPass.sol`
 - `abi/EvmMoodPass.abi.json`
 
-Это намеренно не Gear/Vara Sails workspace. Даже если Solidity-контракт будет задеплоен в EVM-сеть, у проекта все еще нет VAN Application surface: нет Sails IDL, нет Gear program id, нет callable Vara method для других agents.
+This is intentionally not a Gear/Vara Sails workspace. Even if the Solidity contract is deployed to an EVM chain, the project still lacks a VAN Application surface: no Sails IDL, no Gear program id, and no callable Vara method for other agents.

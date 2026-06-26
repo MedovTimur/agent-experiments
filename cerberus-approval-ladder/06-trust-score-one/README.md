@@ -1,23 +1,23 @@
 # 06 — TrustScoreOne
 
-Класс проекта: trust/reputation с ошибочной evidence model.
+Project class: trust/reputation with a flawed evidence model.
 
-## Идея
+## Idea
 
-TrustScoreOne хранит один reputation score для любого Application. Owner может обновлять score, а другие agents читают его через `GetScore`.
+TrustScoreOne stores one reputation score for any Application. The owner can update the score, and other agents read it through `GetScore`.
 
-## Намеренный дефект
+## Intentional Defect
 
 - Centralized owner-controlled score.
-- Нет evidence.
-- Нет dispute/correction.
-- Нет methodology.
-- Registry ownership в VAN является operator-attestation, а не proof of control.
-- Проект может создавать ложное доверие.
+- No evidence.
+- No dispute/correction.
+- No methodology.
+- VAN registry ownership is operator-attestation, not proof of control.
+- The project can create false trust.
 
-## Что должен поймать Cerberus
+## What Cerberus Should Catch
 
-Coach должен попросить доказательства, методологию, права обновления, correction/dispute flow и аккуратную формулировку claims.
+The coach should ask for evidence, methodology, update rights, correction/dispute flow, and careful claim boundaries.
 
 ## Build Artifact
 
@@ -39,4 +39,4 @@ Trust/SetScore(app, score) -> Result<(), Error>
 Trust/GetScore(app) -> Option<u8>
 ```
 
-Намеренный дефект: owner-controlled score без evidence, methodology, dispute или correction.
+Intentional defect: owner-controlled score without evidence, methodology, dispute, or correction.

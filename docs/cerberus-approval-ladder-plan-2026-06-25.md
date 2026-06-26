@@ -1,38 +1,38 @@
-# План эксперимента: лестница апрувов Cerberus
+# Experiment Plan: Cerberus Approval Ladder
 
-Дата: 2026-06-25
+Date: 2026-06-25
 Workspace: `/Users/timur/Desktop/gear/vara-agent-network`
-Skill used: `vara-agent-network-skills`, локальная версия `2.1.0`
+Skill used: `vara-agent-network-skills`, local version `2.1.0`
 
-## Цель
+## Goal
 
-Проверить, как @cerberus принимает или отклоняет идеи для Vara Agent Network, если постепенно улучшать качество проекта: от полностью нерелевантной идеи до сильного Sails dapp с понятным спросом, Gear/Vara-композицией, экономикой и проверяемым методом.
+Test how @cerberus accepts, rejects, or revises project ideas for the Vara Agent Network when project quality is gradually improved: from a fully irrelevant off-chain idea to a strong Sails dapp with clear demand, Gear/Vara composition, economics, and callable methods.
 
-Это не попытка обмануть коуча. Эксперимент нужен, чтобы понять границы review-модели: какие красные флаги он ловит на стадии идеи, какие вопросы задает, когда дает предварительный апрув и какие доказательства требует перед регистрацией.
+This is not an attempt to trick the coach. The experiment is meant to discover review boundaries: which red flags Cerberus catches at the idea stage, what questions he asks, when he gives preliminary approval, and what evidence is required before registration.
 
-## Что проверяет Cerberus
+## What Cerberus Checks
 
-По текущему skill pack Cerberus работает в две большие стадии.
+The current skill pack describes two major review stages.
 
-Stage 1: идея до кода.
+Stage 1: idea review before code.
 
-- viability: есть ли реальная аудитория;
-- demand: какую конкретную проблему решает проект;
-- active usage: будет ли использование после регистрации;
-- profitability: может ли проект генерировать устойчивую ценность;
-- network effect: добавляет ли он транзакции, интеграции или композицию на Vara;
-- ecosystem fit: не является ли он очередным клоном уже насыщенной ниши.
+- viability: whether there is a real audience;
+- demand: what concrete problem the project solves;
+- active usage: whether it will be used after registration;
+- profitability: whether it can generate sustainable value;
+- network effect: whether it adds transactions, integrations, or composability on Vara;
+- ecosystem fit: whether it is just another clone in a saturated niche.
 
-Stage 2: техническая проверка.
+Stage 2: technical review.
 
-- Stage 2a: код до деплоя, включая Sails-архитектуру, state model, tests, IDL, ошибки, auth, безопасность и полноту относительно согласованной идеи.
-- Stage 2b: после деплоя, включая active/initialized program, readiness evidence, identity card, Board announcement, callable behavior и публикацию приложения.
+- Stage 2a: code before deployment, including Sails architecture, state model, tests, IDL, errors, auth, security, and completeness relative to the approved idea.
+- Stage 2b: post-deploy review, including active/initialized program, readiness evidence, identity card, Board announcement, callable behavior, and publication.
 
-Наш первый эксперимент касается в основном Stage 1. На поздних шагах можно перейти в Stage 2, если идея получит апрув.
+This experiment mainly targets Stage 1. Later steps can move into Stage 2 if an idea receives approval.
 
-## Методика
+## Method
 
-Для каждого проекта пишем короткий pitch в одинаковом формате:
+For each project we send a short pitch in the same format:
 
 ```text
 Hey @cerberus! I'd like to pitch my idea for the Vara Agent Network.
@@ -48,241 +48,180 @@ Why it's needed: <gap / demand / differentiation>.
 Would love your feedback!
 ```
 
-Важно: в pitch не нужно заранее перечислять конкурентов и интеграции по handle. Skill говорит, что Cerberus сам спросит про ecosystem fit и конкретных пользователей. Внутри нашего плана мы держим эти данные, но в первый message оставляем идею чистой и проверяем реакцию.
+The skill says not to overload the first pitch with competitor handles and integration maps. Cerberus asks about ecosystem fit and target users as follow-up questions. We keep that evidence internally, but the first message stays focused on the project itself.
 
-После ответа фиксируем:
+After each response we record:
 
-- дал ли Cerberus прямой approval;
-- какие вопросы задал;
-- какие критерии провала назвал;
-- потребовал ли конкретного первого пользователя;
-- потребовал ли Sails/Gear/on-chain часть;
-- потребовал ли экономику или revenue path;
-- предложил ли pivot.
+- whether Cerberus gave direct approval;
+- what questions he asked;
+- which failure criteria he named;
+- whether he requested a concrete first user;
+- whether he required Sails/Gear/on-chain behavior;
+- whether he required economics or a revenue path;
+- whether he suggested a pivot.
 
-## Лестница проектов
+## Project Ladder
 
-### Проект 0: чистый оффчейн без блокчейна
+### Step 00: MoodMosaic
 
-Название: `MoodMosaic`
+Project class: fully off-chain consumer toy.
 
-Идея: агент делает красивые ежедневные mood-доски по текстовым сообщениям пользователей.
+Idea: a daily mood-board agent that turns journal messages into visual summaries.
 
-Track: `Social`
+Track: Social
 
-Что в нем специально плохо:
+Intentional weaknesses:
 
-- нет Vara;
-- нет Sails program;
-- нет on-chain state;
-- нет вызываемого метода для других агентов;
-- ценность скорее consumer-toy, а не сетевой сервис;
-- непонятно, почему это должно жить в Vara Agent Network.
+- no Vara;
+- no Sails program;
+- no on-chain state;
+- no callable method for other agents;
+- consumer-toy value rather than network service value;
+- no clear reason to live in the Vara Agent Network.
 
-Ожидаемая реакция:
+Expected reaction: reject or ask why blockchain/network participation is needed and who would call it.
 
-Cerberus должен отказать или попросить объяснить, зачем здесь блокчейн и кто конкретно будет вызывать этот сервис. Хороший red flag: "это может быть обычный web app".
+### Step 01: ChainMood
 
-Что проверяем:
+Project class: blockchain as a buzzword.
 
-- ловит ли он отсутствие on-chain/composability;
-- просит ли конкретный первый user/use case;
-- допускает ли Social-проект без контракта.
+Idea: the same mood-board service, but described as using blockchain for trust and transparency.
 
-### Проект 1: блокчейн только в описании
+Track: Social
 
-Название: `ChainMood`
+Intentional weaknesses:
 
-Идея: тот же mood-board сервис, но в описании написано, что он "uses blockchain for trust and transparency".
+- blockchain is just marketing language;
+- no concrete contract;
+- no state transition;
+- no callable method;
+- no clear trust property.
 
-Track: `Social`
+Expected reaction: reject buzzwords and ask for a concrete on-chain primitive: what is stored, who calls it, what it returns, and why it cannot be done off-chain.
 
-Что в нем специально плохо:
+### Step 02: EvmMoodPass
 
-- blockchain упомянут как маркетинговое слово;
-- нет конкретного контракта;
-- нет state transition;
-- нет метода, который можно вызвать;
-- неясно, что именно проверяется или хранится.
+Project class: on-chain exists, but not Gear/Vara.
 
-Ожидаемая реакция:
+Idea: users mint an EVM NFT pass for a mood-board service; holder list gates premium access.
 
-Cerberus должен не принять "blockchain" как доказательство и попросить назвать on-chain primitive: что хранится, кто вызывает, что возвращается, почему это нельзя сделать без сети.
+Track: Open
 
-Что проверяем:
+Intentional weaknesses:
 
-- отличает ли он buzzword от реальной on-chain механики;
-- просит ли method/args/return/errors;
-- требует ли доказуемой network activity.
+- blockchain exists, but not Gear/Vara;
+- no deployed Sails dapp;
+- no honest VAN Application registration path;
+- no method for Vara agents.
 
-### Проект 2: on-chain есть, но не Gear/Vara
+Expected reaction: ask to move the useful part into Vara/Sails or treat it as an external/operator service rather than a VAN Application.
 
-Название: `EvmMoodPass`
+### Step 03: VaraEchoBox
 
-Идея: пользователи минтят EVM NFT-pass за mood-board, а агент читает holder list и дает доступ к каналам.
+Project class: Gear/Vara exists, but the idea is empty.
 
-Track: `Open`
+Idea: a Sails dapp with `Echo/Submit(text) -> text` and a call counter.
 
-Что в нем специально плохо:
+Track: Services
 
-- есть блокчейн, но не Gear/Vara Sails dapp;
-- полезность для Vara Agent Network слабая;
-- регистрация Application была бы нечестной, если нет deployed Sails program;
-- метод для других Vara agents отсутствует.
+Intentional weaknesses:
 
-Ожидаемая реакция:
+- technically callable;
+- no demand;
+- no differentiation;
+- echo/ping demo anti-pattern;
+- almost no active use after registration.
 
-Cerberus должен попросить перенести полезную часть в Vara/Sails или объяснить, почему это Application в VAN, а не внешний бот с EVM NFT.
+Expected reaction: reject as a useless demo even though Gear/Sails is present.
 
-Что проверяем:
+### Step 04: BountyBurn
 
-- насколько строго он требует Gear/Vara;
-- отличает ли external integration от deployed Application;
-- предложит ли BE-ORACLE/operator-persona путь вместо Application.
+Project class: Gear/Vara and value flow exist, but economics are broken.
 
-### Проект 3: Gear/Vara есть, но идея пустая
+Idea: a bounty dapp where requesters deposit VARA and workers receive payouts after completion, with a high protocol fee.
 
-Название: `VaraEchoBox`
+Track: Economy
 
-Идея: Sails dapp с методом `Echo/Submit(text) -> text`, плюс счетчик вызовов.
+Intentional weaknesses:
 
-Track: `Services`
+- 50% fee;
+- no dispute model;
+- requester can cancel after work completion;
+- worker cannot prove the work;
+- no receipt/evidence layer;
+- unsafe economics.
 
-Что в нем специально плохо:
+Expected reaction: ask about fund safety, fairness, dispute flow, cancellation, evidence, and crowded bounty/escrow alternatives.
 
-- технически это Sails dapp;
-- но нет реального спроса;
-- нет дифференциации;
-- это типичный echo/ping anti-pattern;
-- active usage после регистрации почти нулевая.
+### Step 05: PricePulseVara
 
-Ожидаемая реакция:
+Project class: useful, but a crowded market.
 
-Cerberus должен отклонить как бесполезный clone/demo, даже если Gear/Sails присутствуют.
+Idea: an oracle publishes prices and exposes `GetPrice(symbol) -> Price`.
 
-Что проверяем:
+Track: Services
 
-- не дает ли он апрув за сам факт Sails;
-- требует ли реальную проблему и differentiated service;
-- отмечает ли насыщенность простых demo-сервисов.
+Intentional weaknesses:
 
-### Проект 4: Gear/Vara есть, но экономика сломана
+- understandable and useful;
+- oracle/data niche is saturated;
+- no unique source;
+- no SLA or verification;
+- no first integrator.
 
-Название: `BountyBurn`
+Expected reaction: ask how this differs from existing oracle/data apps and who specifically will use it.
 
-Идея: Sails dapp для bounty: заказчик кладет VARA, исполнитель получает payout, но комиссия 50%, dispute отсутствует, заказчик может отменить bounty после выполнения, а исполнитель не может доказать работу.
+### Step 06: TrustScoreOne
 
-Track: `Economy`
+Project class: trust/reputation with a bad evidence model.
 
-Что в нем специально плохо:
+Idea: a Sails dapp stores one reputation score for any app, manually updated by the owner.
 
-- есть реальные value flows;
-- но экономика и trust model вредят пользователям;
-- нет dispute/cancellation safety;
-- нет доказательств выполнения;
-- высокий риск эксплуатации.
+Track: Services
 
-Ожидаемая реакция:
+Intentional weaknesses:
 
-Cerberus должен эскалировать вопросы экономики, спросить про безопасность funds, fairness, dispute model, pull-vs-push payout, условия cancellation и почему это не ухудшает уже существующие escrow/bounty apps.
+- owner-controlled score;
+- false trust;
+- no evidence;
+- no dispute/correction;
+- no methodology;
+- conflicts with VAN's operator-attestation trust model.
 
-Что проверяем:
+Expected reaction: ask for evidence sources, update rights, dispute/correction, methodology, and narrower claims.
 
-- ловит ли он экономические ошибки на Stage 1;
-- требует ли risk model до кода;
-- замечает ли насыщенность Economy/escrow ниши.
+### Step 07: ReceiptLite
 
-### Проект 5: Gear/Vara есть, спрос есть, но идея дублирует рынок
+Project class: nearly good, but missing first user and economics.
 
-Название: `PricePulseVara`
+Idea: a Sails dapp stores structured receipts for completed integrations: subject app, target app, proof kind, evidence hash, and summary.
 
-Идея: oracle публикует цены популярных токенов и дает метод `GetPrice(symbol) -> price`.
+Track: Services
 
-Track: `Services`
+Strengths:
 
-Что в нем специально плохо:
+- concrete callable method;
+- on-chain evidence envelope;
+- careful claims;
+- fits operator-attestation;
+- useful for bounty/readiness/review workflows.
 
-- это понятно и полезно;
-- но ниша oracle/data уже насыщена;
-- нет уникального источника, SLA, доказательства качества или интеграционного bundle;
-- вероятно похож на уже существующие oracle/bridge apps.
+Intentional missing pieces:
 
-Ожидаемая реакция:
+- no named first integrator;
+- unclear submitter policy;
+- no revenue path;
+- no duplicate/correction/dispute policy.
 
-Cerberus должен спросить, чем проект отличается от существующих oracle/data apps, кто первый интегратор, какая точность/латентность и почему нужен еще один oracle.
+Expected reaction: close to good, but needs a concrete workflow, first consumer, and value capture.
 
-Что проверяем:
+### Step 08: ProofPack
 
-- ловит ли он ecosystem saturation;
-- требует ли sharp differentiation;
-- достаточно ли "полезная идея" без уникальности.
+Project class: strong candidate.
 
-### Проект 6: Gear/Vara есть, но техническая модель ошибочная
+Idea: a Vara Sails dapp for portable integration receipts. It stores compact evidence envelopes for completed agent-to-agent actions and gives other services a query-friendly reference.
 
-Название: `TrustScoreOne`
-
-Идея: Sails dapp считает reputation score для любого app по одному числу, которое owner может вручную обновлять.
-
-Track: `Services`
-
-Что в нем специально плохо:
-
-- метод есть: `SetScore(app, score)` и `GetScore(app)`;
-- но owner-controlled score создает ложное доверие;
-- нет источников evidence;
-- registry ownership model в VAN operator-attestation, не proof of control;
-- легко превратить в centralized arbitrary rating.
-
-Ожидаемая реакция:
-
-Cerberus должен спросить про источники доказательств, dispute/correction, кто имеет право обновлять score, почему этому можно доверять и как не вводить других агентов в заблуждение.
-
-Что проверяем:
-
-- ловит ли он trust-model mismatch;
-- требует ли evidence hash / receipts / methodology;
-- просит ли сузить claims.
-
-### Проект 7: почти хороший, но без первого пользователя
-
-Название: `ReceiptLite`
-
-Идея: Sails dapp хранит структурированные receipts о выполненной интеграции: subject app, target app, proof kind, evidence hash, summary.
-
-Track: `Services`
-
-Что в нем хорошо:
-
-- есть callable method;
-- есть on-chain evidence envelope;
-- не притворяется oracle или reputation authority;
-- подходит под trust model operator-attestation;
-- может быть полезен для bounty/readiness/review workflows.
-
-Что специально недостает:
-
-- нет названного первого интегратора;
-- неясно, кто будет submitter;
-- нет revenue path;
-- нет политики duplicate/correction/dispute.
-
-Ожидаемая реакция:
-
-Cerberus может сказать, что идея близка к хорошей, но попросит конкретного first user, workflow и monetization/value capture.
-
-Что проверяем:
-
-- сколько недостающей конкретики блокирует approval;
-- где граница между "good direction" и "go build it";
-- какие вопросы надо закрыть для финальной версии.
-
-### Проект 8: сильный кандидат на approval
-
-Название: `ProofPack`
-
-Идея: Sails dapp для portable integration receipts. Он хранит компактные доказательные пакеты о выполненных agent-to-agent действиях и дает другим сервисам query-friendly ссылку на evidence.
-
-Track: `Services`
+Track: Services
 
 Core methods:
 
@@ -315,52 +254,41 @@ DuplicateEvidenceHash
 UnauthorizedCorrection
 ```
 
-Почему это уже сильнее:
+Why this is stronger:
 
-- on-chain primitive понятен;
-- это deployed Sails dapp, а не просто бот;
-- не заменяет escrow, oracle или reputation, а дает им общий receipt layer;
-- может генерировать network activity через submit/query;
-- target users понятны: bounty apps, readiness apps, reviewers, dashboards, game/arena apps;
-- claims аккуратные: receipt is operator-attested evidence envelope, not absolute truth.
+- clear on-chain primitive;
+- deployed Sails dapp, not just a bot;
+- does not replace escrow, oracle, or reputation;
+- creates network activity through submit/query;
+- target users are clear: bounty apps, readiness apps, reviewers, dashboards, games/arenas;
+- careful claim: receipt is an operator-attested evidence envelope, not absolute truth.
 
-Что нужно подготовить перед pitch:
+Expected reaction: approval or precise revision requests.
 
-- один конкретный first user/workflow;
-- почему это не generic reputation oracle;
-- как monetization/value capture может работать: fee per receipt, premium digest, sponsored verification, или бесплатный v1 с later fee switch;
-- как corrections/disputes оформляются: append-only correction receipt, not mutation;
-- какие bounded fields и anti-spam лимиты будут в contract;
-- что будет в identity card и Board announcement.
+## Launch Order
 
-Ожидаемая реакция:
+1. Do not send all projects at once.
+2. Start with MoodMosaic to test the most basic failure mode.
+3. After each answer, briefly acknowledge the issue and move to the next iteration.
+4. Do not pretend every prior project was a real production candidate. Use framing such as "I am iterating the idea based on your feedback."
+5. Stop when Cerberus says "go build it" or gives a direct equivalent.
+6. Keep a local log for each step: pitch, response, classification, next change.
 
-Это кандидат, который должен получить либо approval, либо очень конкретные доработки. Если Cerberus не дает approval, его вопросы станут checklist для финальной версии.
-
-## Предлагаемый порядок запуска
-
-1. Не отправлять сразу все проекты. Идти по одному, иначе Cerberus может воспринять это как шум.
-2. Начать с `MoodMosaic`, чтобы проверить базовый отказ: "нет блокчейна".
-3. После ответа коротко признать проблему и предложить следующий вариант, не споря.
-4. Не притворяться, что предыдущий проект был настоящим. Формулировка: "I am iterating the idea based on your feedback".
-5. Остановиться, когда Cerberus впервые скажет "go build it" или даст прямой аналог approval.
-6. Для каждого шага вести локальный лог: pitch, response, classification, next change.
-
-## Таблица ожиданий
+## Expected Outcome Table
 
 | Step | Project | Blockchain | Vara/Gear | Real demand | Differentiation | Economics | Expected |
 |---|---|---:|---:|---:|---:|---:|---|
-| 0 | MoodMosaic | no | no | weak | weak | none | reject |
-| 1 | ChainMood | buzzword | no | weak | weak | none | reject |
-| 2 | EvmMoodPass | yes | no | weak | weak | weak | reject / redirect |
-| 3 | VaraEchoBox | yes | yes | none | none | none | reject |
-| 4 | BountyBurn | yes | yes | medium | weak | broken | reject |
-| 5 | PricePulseVara | yes | yes | medium | weak/crowded | unclear | reject or demand differentiation |
-| 6 | TrustScoreOne | yes | yes | medium | risky | unclear | reject or demand evidence model |
-| 7 | ReceiptLite | yes | yes | plausible | decent | unclear | revise |
-| 8 | ProofPack | yes | yes | plausible | strong | explainable | likely approve / precise revisions |
+| 00 | MoodMosaic | no | no | weak | weak | none | reject |
+| 01 | ChainMood | buzzword | no | weak | weak | none | reject |
+| 02 | EvmMoodPass | yes | no | weak | weak | weak | reject / redirect |
+| 03 | VaraEchoBox | yes | yes | none | none | none | reject |
+| 04 | BountyBurn | yes | yes | medium | weak | broken | reject |
+| 05 | PricePulseVara | yes | yes | medium | weak/crowded | unclear | reject or demand differentiation |
+| 06 | TrustScoreOne | yes | yes | medium | risky | unclear | reject or demand evidence model |
+| 07 | ReceiptLite | yes | yes | plausible | decent | unclear | revise |
+| 08 | ProofPack | yes | yes | plausible | strong | explainable | likely approve / precise revisions |
 
-## Минимальный лог для каждого шага
+## Per-Step Log Template
 
 ```md
 ## Step N: <Project>
@@ -387,10 +315,10 @@ Next change:
 <what we improve in the next pitch>
 ```
 
-## Вопросы для обсуждения перед запуском
+## Discussion Questions Before Running
 
-1. Хотим ли мы идти совсем от плохого `MoodMosaic`, или начать с `VaraEchoBox`, чтобы не тратить первые сообщения на очевидный отказ?
-2. Делать ли все проекты как честную итерацию одной идеи, или как разные проектные заявки?
-3. Сколько отказов допустимо до перехода к хорошему кандидату?
-4. Финальный хороший проект оставляем `ProofPack` или подберем что-то более яркое и consumer-facing?
-5. Будем ли после Stage 1 реально строить финальный approved dapp, или задача только в измерении coach behavior?
+1. Should we start with the very weak MoodMosaic, or skip to VaraEchoBox to avoid obvious early rejections?
+2. Should all projects be framed as honest iterations of one idea, or as separate submissions?
+3. How many rejections should we tolerate before jumping to the strong candidate?
+4. Should the final strong project remain ProofPack, or should we choose something more vivid and consumer-facing?
+5. After Stage 1, do we actually build the approved dapp, or is the goal only to measure coach behavior?

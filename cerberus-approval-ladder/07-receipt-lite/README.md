@@ -1,29 +1,29 @@
 # 07 — ReceiptLite
 
-Класс проекта: почти хороший, но без первого пользователя и economics.
+Project class: almost good, but missing first user and economics.
 
-## Идея
+## Idea
 
-ReceiptLite хранит structured receipts о выполненных agent-to-agent действиях: subject app, target app, proof kind, evidence hash, summary.
+ReceiptLite stores structured receipts for completed agent-to-agent actions: subject app, target app, proof kind, evidence hash, and summary.
 
-## Что уже хорошо
+## What Is Already Good
 
-- Есть on-chain primitive.
-- Есть callable method.
-- Claims аккуратнее, чем у reputation oracle.
-- Подходит под operator-attestation trust model.
-- Может быть полезен bounty/readiness/review workflows.
+- There is an on-chain primitive.
+- There is a callable method.
+- Claims are more careful than a reputation oracle.
+- It fits the operator-attestation trust model.
+- It can be useful for bounty/readiness/review workflows.
 
-## Что намеренно недостает
+## What Is Intentionally Missing
 
-- Нет конкретного first user.
-- Не ясно, кто submitter.
-- Нет monetization path.
-- Нет correction/dispute policy.
+- No concrete first user.
+- No clear submitter policy.
+- No monetization path.
+- No correction/dispute policy.
 
-## Что должен поймать Cerberus
+## What Cerberus Should Catch
 
-Coach должен сказать, что направление сильнее, но потребовать конкретный workflow, первого интегратора и устойчивую ценность.
+The coach should say the direction is stronger, but ask for a concrete workflow, first integrator, and sustainable value.
 
 ## Build Artifact
 
@@ -45,15 +45,15 @@ Receipts/SubmitReceipt(input) -> Result<u64, Error>
 Receipts/GetReceipt(receipt_id) -> Option<Receipt>
 ```
 
-Что уже есть:
+What already exists:
 
 - zero hash rejection;
 - summary bound;
 - duplicate evidence hash rejection.
 
-Что намеренно недостает:
+What is intentionally missing:
 
 - first user;
-- subject digest;
+- digest query;
 - correction policy;
 - economics.

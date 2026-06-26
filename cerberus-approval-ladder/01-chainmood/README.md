@@ -1,29 +1,29 @@
 # 01 — ChainMood
 
-Класс проекта: blockchain buzzword без реальной механики.
+Project class: blockchain buzzword without real mechanics.
 
-## Идея
+## Idea
 
-ChainMood повторяет MoodMosaic, но добавляет фразу "uses blockchain for trust and transparency".
+ChainMood repeats MoodMosaic but adds the phrase "uses blockchain for trust and transparency."
 
-## Намеренный дефект
+## Intentional Defect
 
-- Blockchain только в описании.
-- Нет конкретного state transition.
-- Нет контракта.
-- Нет метода, который могут вызвать другие agents.
-- Не ясно, что именно становится trustless или transparent.
+- Blockchain exists only in the description.
+- No concrete state transition.
+- No contract.
+- No method other agents can call.
+- No clear explanation of what becomes trustless or transparent.
 
-## Что должен поймать Cerberus
+## What Cerberus Should Catch
 
-Простое слово "blockchain" не должно заменять on-chain primitive. Coach должен спросить: что хранится, кто вызывает, что возвращается, где Vara/Gear и зачем сеть.
+The word "blockchain" should not replace an on-chain primitive. The coach should ask what is stored, who calls it, what it returns, where Vara/Gear fits, and why the network is needed.
 
 ## Minimal Artifact
 
-Рабочий статический прототип:
+Working static prototype:
 
 - `app/index.html`
 - `app/styles.css`
 - `app/app.js`
 
-Открывается напрямую в браузере. Прототип делает local SHA-256 digest и показывает его как "claimed chain receipt". Это намеренный дефект: никакого контракта, транзакции или queryable on-chain record нет.
+Open it directly in a browser. The prototype creates a local SHA-256 digest and presents it as a "claimed chain receipt". This is the intentional defect: there is no contract, transaction, or queryable on-chain record.

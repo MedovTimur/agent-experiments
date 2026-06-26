@@ -1,31 +1,31 @@
 # Cerberus Approval Ladder
 
-Дата: 2026-06-25
+Date: 2026-06-25
 
-Эта папка содержит последовательные проекты для эксперимента с @cerberus: от заведомо слабых заявок до сильного Vara/Gear Sails dapp. Каждый проект лежит отдельно и содержит pitch, проверяемый дефект и ожидаемую реакцию.
+This folder contains a sequence of project experiments for @cerberus review: from intentionally weak submissions to a stronger Vara/Gear Sails dapp candidate. Each project lives in its own folder and includes a pitch, the intended review failure mode, and the expected coach reaction.
 
-Главный план: `../../reports/cerberus-approval-ladder-plan-2026-06-25.md`
+Main plan: `../docs/cerberus-approval-ladder-plan-2026-06-25.md`
 
-## Порядок
+## Order
 
 | Step | Folder | Project | Purpose |
 |---|---|---|---|
-| 00 | `00-moodmosaic` | MoodMosaic | Полностью оффчейн consumer toy |
-| 01 | `01-chainmood` | ChainMood | Blockchain как buzzword без механики |
-| 02 | `02-evm-mood-pass` | EvmMoodPass | On-chain есть, но не Vara/Gear Application |
-| 03 | `03-vara-echo-box` | VaraEchoBox | Sails есть, спроса нет |
-| 04 | `04-bounty-burn` | BountyBurn | Sails/economy есть, экономика сломана |
-| 05 | `05-price-pulse-vara` | PricePulseVara | Полезно, но crowded oracle без отличия |
-| 06 | `06-trust-score-one` | TrustScoreOne | Trust/reputation с плохой evidence model |
-| 07 | `07-receipt-lite` | ReceiptLite | Почти хорошо, но нет first user/economics |
-| 08 | `08-proof-pack` | ProofPack | Сильный кандидат на Stage 1 approval |
+| 00 | `00-moodmosaic` | MoodMosaic | Fully off-chain consumer toy |
+| 01 | `01-chainmood` | ChainMood | Blockchain as a buzzword without mechanics |
+| 02 | `02-evm-mood-pass` | EvmMoodPass | On-chain, but not a Vara/Gear Application |
+| 03 | `03-vara-echo-box` | VaraEchoBox | Sails exists, demand does not |
+| 04 | `04-bounty-burn` | BountyBurn | Sails/economy exists, economics are broken |
+| 05 | `05-price-pulse-vara` | PricePulseVara | Useful, but a crowded oracle with no edge |
+| 06 | `06-trust-score-one` | TrustScoreOne | Trust/reputation with a weak evidence model |
+| 07 | `07-receipt-lite` | ReceiptLite | Almost useful, but missing first user/economics |
+| 08 | `08-proof-pack` | ProofPack | Stronger Stage 1 approval candidate |
 
-## Использование
+## Usage
 
-1. Идем по папкам по порядку.
-2. Берем `pitch.md`, отправляем Cerberus.
-3. Записываем ответ в `result.md` по шаблону из плана.
-4. Переходим к следующей ступени, исправляя ровно тот класс провала, который должен был всплыть.
+1. Move through folders in order.
+2. Send the folder's `pitch.md` to Cerberus.
+3. Record the response in `result.md` using `result-template.md`.
+4. Move to the next step, fixing exactly the failure class surfaced by the previous response.
 
 ## Build Status
 
@@ -37,6 +37,6 @@
 
 These are not deployed programs yet. The contract sketches are intentionally lightweight Stage 1 / Stage 2a artifacts; the final approved candidate should be moved into a proper Sails workspace with generated IDL, gtests, and deploy scripts.
 
-## Принцип
+## Principle
 
-Ранние проекты намеренно недостроены. Это не технический долг, а часть эксперимента: мы проверяем, отсекает ли coach отсутствие Vara, отсутствие callable метода, отсутствие спроса, сломанную экономику, crowded нишу и некорректную trust model.
+The early projects are intentionally underbuilt. That is not accidental technical debt; it is the experiment. We are testing whether the coach catches missing Vara relevance, missing callable methods, missing demand, broken economics, crowded niches, and incorrect trust models.
