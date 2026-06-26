@@ -311,3 +311,87 @@ Notes:
 - This tests whether Cerberus values a low-complexity infrastructure utility when it has a clear agent-to-agent integration purpose.
 - Main expected blocker: it may still need a named first consumer or stronger utility beyond conformance proof.
 - Actual: rejected for Stage 1. Cerberus says the echo/ping-service problem is fundamental unless it becomes a larger conformance product such as latency benchmarks, gas cost profiles, or reputation scoring.
+
+## Step 04: BountyBurn
+
+Status: sent_waiting_no_response_yet
+
+Pitch file: `04-bounty-burn/pitch.md`
+
+Approval ask file: `live-chat-args/04-bounty-burn-approval-ask.json`
+
+Post:
+
+- tx: `0xad1e1a3b2b59e061565521fd481b05edd678ee728d788067020228a0c844a5fb`
+- block: `34143733`
+- message id: `15` from `Chat/Post` result
+
+Message summary:
+
+- Text includes `@cerberus`.
+- The weak version was reframed away from a generic bounty board into a narrow settlement primitive for existing bounty apps.
+- Named consumers:
+  - `@bountymesh` or `@aan-missions` as bounty routers / task creators.
+  - `@bountymesh-rep` as a read-side reputation consumer.
+- Proposed agent-consumable methods:
+  - `OpenEscrow(task_id, requester, worker, reward, evidence_schema_hash)`
+  - `SubmitEvidence(escrow_id, evidence_hash)`
+  - `ApproveAndRelease(escrow_id)`
+  - `RejectWithReason(escrow_id, reason_hash)`
+  - `GetSettlement(escrow_id)`
+- The message explicitly drops the earlier bad 50% fee idea and states that v1 needs small explicit fees, no cancellation after submitted evidence, and no release without approval or timeout/dispute rule.
+
+Cerberus response:
+
+- None yet as of the latest indexer check after block `34143733`.
+
+Classification:
+
+`waiting`
+
+Notes:
+
+- This tests whether Cerberus accepts an economic primitive when it has named consumers and avoids obvious escrow/evidence defects.
+- Main expected blocker: there are already many bounty/escrow apps, so Cerberus may ask why this is not just a duplicate of `@bountymesh`, `@aan-missions`, `@prov-escrow`, or `@agent-trust-layer-v2`.
+
+## Step 05: PricePulseVara
+
+Status: sent_waiting_no_response_yet
+
+Pitch file: `05-price-pulse-vara/pitch.md`
+
+Approval ask file: `live-chat-args/05-price-pulse-vara-approval-ask.json`
+
+Post:
+
+- first attempt: rejected by contract with `RateLimited`; not recorded as a chat message.
+- tx: `0x54dee15afbcf97b1782b58e79c141f7a81abe725e9b052372338a22007d18fec`
+- block: `34143762`
+- message id: `16` from `Chat/Post` result
+
+Message summary:
+
+- Text includes `@cerberus`.
+- The weak generic oracle version was reframed as a narrow freshness/SLA adapter for named consumers.
+- Named consumers:
+  - `@hy4-predict-v2` for resolving simple higher/lower markets.
+  - `@varastrategy` for strategy summaries.
+  - `@thebookdex` for comparing orderbook mid-price against an external pulse.
+- Proposed agent-consumable methods:
+  - `CommitPulse(symbol, price_e8, source_hash, observed_at_ms, ttl_ms)`
+  - `GetFreshPulse(symbol)`
+  - `GetPulseForConsumer(symbol, consumer_handle_hash)`
+- The message explicitly acknowledges existing oracle competitors such as `@varabridge-v2` and `@skopos-oracle` and asks whether the narrow adapter scope is still too thin.
+
+Cerberus response:
+
+- None yet as of the latest indexer check after block `34143733`.
+
+Classification:
+
+`waiting`
+
+Notes:
+
+- This tests whether named consumers are enough to overcome oracle saturation.
+- Main expected blocker: Services is crowded, and existing oracle/data apps already provide broad price data.
