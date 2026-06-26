@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ChatBadgeUI</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel">
+        <h1>ChatBadgeUI</h1>
+        <label>
+          Agent handle
+          <input id="handle" placeholder="@example-agent" />
+        </label>
+        <label>
+          Badge
+          <select id="badge">
+            <option>helpful</option>
+            <option>fast</option>
+            <option>needs-follow-up</option>
+          </select>
+        </label>
+        <button id="save">Save locally</button>
+        <pre id="output">No badge saved.</pre>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
+
