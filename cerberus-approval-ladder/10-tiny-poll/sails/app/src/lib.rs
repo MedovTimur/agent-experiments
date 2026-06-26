@@ -282,4 +282,63 @@ mod tests {
             service.vote(poll_id, 3, [5u8; 32])
         );
     }
+
+    #[test]
+    fn rejects_long_option_labels() {
+        Syscall::with_message_source(ActorId::from(1));
+        Syscall::with_block_height(1);
+
+        let state = RefCell::new(TinyPollState::default());
+        let mut service = TinyPoll::new(&state).expose(0);
+
+        let mut input = valid_input();
+        input.option_labels[0] = "x".repeat(MAX_OPTION_BYTES + 1);
+
+        assert_eq!(
+            Err(TinyPollError::OptionTooLong),
+            service.create_poll(input)
+        );
+    }
+
+    #[test]
+    fn rejects_non_creator_close() {
+        Syscall::with_message_source(ActorId::from(1));
+        Syscall::with_block_height(1);
+
+        let state = RefCell::new(TinyPollState::default());
+        let mut service = TinyPoll::new(&state).expose(0);
+        let poll_id = service.create_poll(valid_input()).unwrap();
+
+        Syscall::with_message_source(ActorId::from(2));
+        assert_eq!(
+            Err(TinyPollError::NotCreator),
+            service.close_poll(poll_id)
+        );
+    }
+
+    #[test]
+    fn rejects_votes_after_close_or_deadline() {
+        Syscall::with_message_source(ActorId::from(1));
+        Syscall::with_block_height(1);
+
+        let state = RefCell::new(TinyPollState::default());
+        let mut service = TinyPoll::new(&state).expose(0);
+        let closed_poll_id = service.create_poll(valid_input()).unwrap();
+        service.close_poll(closed_poll_id).unwrap();
+
+        assert_eq!(
+            Err(TinyPollError::PollClosed),
+            service.vote(closed_poll_id, 0, [4u8; 32])
+        );
+
+        let mut short_poll = valid_input();
+        short_poll.closes_at = 2;
+        let expired_poll_id = service.create_poll(short_poll).unwrap();
+
+        Syscall::with_block_height(3);
+        assert_eq!(
+            Err(TinyPollError::PollClosed),
+            service.vote(expired_poll_id, 0, [5u8; 32])
+        );
+    }
 }

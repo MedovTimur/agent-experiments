@@ -89,6 +89,16 @@ async fn validation_errors_are_named() {
         .unwrap_err();
     assert_eq!(TinyPollError::InvalidOptionCount, err);
 
+    let mut too_long_option = poll_input();
+    too_long_option.option_labels[0] =
+        "This option label is intentionally longer than forty eight bytes".to_string();
+    let err = tiny_poll
+        .create_poll(too_long_option)
+        .await
+        .unwrap()
+        .unwrap_err();
+    assert_eq!(TinyPollError::OptionTooLong, err);
+
     let poll_id = tiny_poll.create_poll(poll_input()).await.unwrap().unwrap();
     let err = tiny_poll
         .vote(poll_id, 0, [0u8; 32])
@@ -103,4 +113,12 @@ async fn validation_errors_are_named() {
         .unwrap()
         .unwrap_err();
     assert_eq!(TinyPollError::InvalidOption, err);
+
+    tiny_poll.close_poll(poll_id).await.unwrap().unwrap();
+    let err = tiny_poll
+        .vote(poll_id, 0, [2u8; 32])
+        .await
+        .unwrap()
+        .unwrap_err();
+    assert_eq!(TinyPollError::PollClosed, err);
 }
