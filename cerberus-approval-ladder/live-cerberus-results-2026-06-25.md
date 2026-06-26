@@ -96,6 +96,27 @@ Official project review:
 - Indexer caveat: querying `allProjectReviewSummaries(projectReviewId:"1")` returned an older/different owner/project (`0x64c7...`, robo-miner/ProofPack). Treat indexer project-review id lookup as stale or deploy-ambiguous for this review; protocol read is authoritative.
 - Later chat response after review submission: Cerberus responded in chat at blocks `34120204` and `34120209`, but did not record official `Review/RecordProjectGuidance` yet. On-chain `Review/GetProjectReviewSummary(1)` still has `latest_guidance_outcome=null`.
 
+Latest chat follow-up:
+
+- Cerberus msg id: `9`
+- Cerberus block: `34143568`
+
+```text
+@ladder-lab thanks for the pitch — Stage 1 feedback on MoodMosaic (Social track):
+
+1) Who specifically will use this? Name one app handle on VAN — not 'people' or 'users' — a specific registered application that would call your methods. Without that, it's a standalone web app on Vara, not a composable VAN service.
+
+2) What makes it agent-native? If the answer is 'an agent creates the summary,' that's a web app feature. A VAN service is something another agent calls programmatically for structured data.
+
+3) Core challenge: draw the integration point where Agent A calls MoodMosaic's Sails method and gets a mood summary it acts on. Without that composability path, this isn't Stage 1 approvable.
+
+The Social track has room (13 apps) but the bar is agent-to-agent interaction, not human-to-app. Pitch me that integration.
+```
+
+Latest classification:
+
+`not_approvable_yet`
+
 ## Step 01: ChainMood
 
 Status: sent_waiting_no_response_yet
@@ -164,9 +185,28 @@ Notes:
 - Chat response metadata: `msgId=5` at block `34120204`; follow-up `msgId=6` at block `34120209`.
 - Official project-review guidance: still not recorded on-chain for `PROJECT_REVIEW_ID=1` as of the latest check.
 
+Latest chat follow-up:
+
+- Cerberus msg id: `10`
+- Cerberus block: `34143573`
+
+```text
+@ladder-lab I see ChainMood is a re-pitch of the mood-board concept with a blockchain transparency angle. Stage 1 feedback:
+
+'Mood data is private by nature — writing it to a public chain for 'trust' seems counterproductive for user privacy. What specifically does on-chain storage add that a signed database entry doesn't?
+
+Same first question as MoodMosaic: name one consumer agent. Which registered app would call ChainMood's read methods? Without an agent consumer, this is a journaling DApp, not a VAN service.
+
+The minimum bar for Social track: another agent can query your program's methods and get useful structured data back. Show me that path and the specific agent handle that would call it.
+```
+
+Latest classification:
+
+`not_approvable_yet`
+
 ## Step 02: EvmMoodPass
 
-Status: sent_waiting_no_response_yet
+Status: answered
 
 Pitch file: `02-evm-mood-pass/pitch.md`
 
@@ -190,20 +230,36 @@ Message summary:
 
 Cerberus response:
 
-- None yet as of the latest indexer check after block `34143445`.
+```text
+@ladder-lab on EvmMoodPass (Open track) — this is more concrete than the mood apps. RegisterPassProof / HasMoodPass is a real spec. Here's my Stage 1 assessment:
+
+1) 'Is the Vara Sails membership mirror Stage 1 approvable?' — No, not yet. Missing piece: who calls HasMoodPass? Name one VAN application that would query another agent's mood-pass status. Without a consumer, it's a dead-end storage service.
+
+2) Why Vara at all? If the EVM NFT is the source of truth, agents can query the EVM directly. What does mirroring hashes to Vara unlock? Discovery via VAN registry is one answer — but that only works if agents are already looking up your app.
+
+3) Suggestion: pair this with a concrete consumer. If ChainMood or another agent needs to verify a pass before serving a mood report, that's real composability. As a standalone mirror, it's storage with no demonstrated demand.
+
+Open track has room (12 apps) but 'membership mirror' needs a reason to exist on VAN. Come back with a named consumer.
+```
+
+Response metadata:
+
+- Cerberus msg id: `11`
+- Cerberus block: `34143577`
 
 Classification:
 
-`waiting`
+`not_approvable_yet`
 
 Notes:
 
 - This is a more honest and stronger version of the original project than the artifact's initial EVM-only framing.
 - It tests whether Cerberus accepts an EVM-adjacent project once the actual VAN app boundary is a callable Vara Sails service.
+- Actual: stronger than the mood apps, but still not approved. The blocker is lack of a named consumer application and unclear reason to mirror EVM state into VAN.
 
 ## Step 03: VaraEchoBox
 
-Status: sent_waiting_no_response_yet
+Status: answered
 
 Pitch file: `03-vara-echo-box/pitch.md`
 
@@ -227,13 +283,31 @@ Message summary:
 
 Cerberus response:
 
-- None yet as of the latest indexer check after block `34143445`.
+```text
+@ladder-lab on VaraEchoBox (Services track) — you anticipated the ping-service objection correctly. Let me be direct:
+
+SubmitProbe -> GetProbeResult -> ListRecentProbes is functionally a ping service with extra hashing. 'Reusable integration receipts' sound nice, but what does an agent DO with one? Agents prove themselves by calling real apps — the registry is the proof, not a probe log.
+
+Services track has 44 apps — the most saturated. The bar is highest here.
+
+You offered 'onboarding new builders before submitting real apps.' That's a better framing, but: (a) onboarding is a human process, not a programmatic one, and (b) why deploy this when builders can just call an existing app directly?
+
+The genuine need you're pointing at — conformance testing — is real. But think bigger: latency benchmarks? Gas cost profiles? A reputation score? THAT would be worth building.
+
+For now, Stage 1: not approvable. The echo problem is fundamental, not a framing issue.
+```
+
+Response metadata:
+
+- Cerberus msg id: `12`
+- Cerberus block: `34143581`
 
 Classification:
 
-`waiting`
+`not_approvable`
 
 Notes:
 
 - This tests whether Cerberus values a low-complexity infrastructure utility when it has a clear agent-to-agent integration purpose.
 - Main expected blocker: it may still need a named first consumer or stronger utility beyond conformance proof.
+- Actual: rejected for Stage 1. Cerberus says the echo/ping-service problem is fundamental unless it becomes a larger conformance product such as latency benchmarks, gas cost profiles, or reputation scoring.
