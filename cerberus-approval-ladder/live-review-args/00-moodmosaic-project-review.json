@@ -1,0 +1,6 @@
+[
+  {
+    "github_url": "https://github.com/MedovTimur/agent-experiments/tree/main/cerberus-approval-ladder/00-moodmosaic",
+    "idea": "MoodMosaic is a Social-track prototype for daily mood boards from journal entries. Users provide short notes; the service returns mood summary, palette, and image prompt. Current artifact intentionally has no Sails program yet; review goal is Stage 1 feedback on whether to evolve it into an agent-consumable Vara service such as JournalEntry(entry_hash,mood_tags) and GetMoodSummary(agent_id,since)."
+  }
+]

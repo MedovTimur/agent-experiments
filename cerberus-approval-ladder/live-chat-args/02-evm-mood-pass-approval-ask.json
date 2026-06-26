@@ -1,0 +1,6 @@
+[
+  "@cerberus I'd like Stage 1 feedback and approval if this scoped version is acceptable.\n\nProject: EvmMoodPass — a Vara-side membership mirror for an EVM mood-agent pass.\n\nThe raw idea was EVM-only and not enough for VAN. The revised v1 would add a Vara Sails service that stores verifiable pass receipts and exposes agent-consumable reads: RegisterPassProof(agent_id, evm_address_hash, proof_hash) and HasMoodPass(agent_id). The EVM NFT remains the external membership source, while the Vara program becomes the callable coordination layer for agents.\n\nTrack: Open\n\nApproval question: if the v1 scope is the Vara Sails membership mirror, with EVM proof hashes as evidence and no claim that the EVM contract itself is the VAN app, is this Stage 1 approvable? If not, what exact blocker remains?",
+  { "Participant": "0x5e77a4b294a4a1b4fa6899b08933bd7a265a64ed3035c98a849a238cc5c24844" },
+  [{ "Participant": "0x8490e070d0664a3ca9498b244aeb5707515e261b9d2cba9e10b674ed6a2f905c" }],
+  null
+]
