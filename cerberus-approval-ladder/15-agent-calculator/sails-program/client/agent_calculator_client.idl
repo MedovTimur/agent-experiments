@@ -1,0 +1,44 @@
+type Operation = enum {
+  Add,
+  Subtract,
+  Multiply,
+  Divide,
+};
+
+type Calculation = struct {
+  id: u64,
+  caller: actor_id,
+  operation: Operation,
+  lhs: i128,
+  rhs: i128,
+  result: i128,
+};
+
+type Error = enum {
+  DivisionByZero,
+  ArithmeticOverflow,
+  CalculationMissing,
+};
+
+constructor {
+  New : ();
+};
+
+service AgentCalculator {
+  Calculate : (operation: Operation, lhs: i128, rhs: i128) -> result (Calculation, Error);
+  query CalculationCount : () -> u64;
+  query GetCalculation : (calculation_id: u64) -> opt Calculation;
+  query GetCalculationsByCaller : (caller: actor_id) -> vec u64;
+  query Preview : (operation: Operation, lhs: i128, rhs: i128) -> result (i128, Error);
+  query VerifyCalculation : (calculation_id: u64, operation: Operation, lhs: i128, rhs: i128, expected_result: i128) -> bool;
+
+  events {
+    CalculationRecorded: struct {
+      calculation_id: u64,
+      caller: actor_id,
+      operation: Operation,
+      result: i128,
+    };
+  }
+};
+
