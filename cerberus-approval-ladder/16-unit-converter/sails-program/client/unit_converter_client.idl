@@ -1,0 +1,45 @@
+type ConversionKind = enum {
+  BytesToKib,
+  KibToBytes,
+  SecondsToMinutesFloor,
+  MinutesToSeconds,
+  BasisPointsToPermilleFloor,
+  PermilleToBasisPoints,
+};
+
+type ConversionReceipt = struct {
+  id: u64,
+  caller: actor_id,
+  kind: ConversionKind,
+  input: u128,
+  output: u128,
+};
+
+type Error = enum {
+  ArithmeticOverflow,
+  ConversionMissing,
+};
+
+constructor {
+  New : ();
+};
+
+service UnitConverter {
+  Convert : (kind: ConversionKind, input: u128) -> result (ConversionReceipt, Error);
+  query ConversionCount : () -> u64;
+  query GetConversion : (conversion_id: u64) -> opt ConversionReceipt;
+  query GetConversionsByCaller : (caller: actor_id) -> vec u64;
+  query Preview : (kind: ConversionKind, input: u128) -> result (u128, Error);
+  query VerifyConversion : (conversion_id: u64, kind: ConversionKind, input: u128, expected_output: u128) -> bool;
+
+  events {
+    ConversionRecorded: struct {
+      conversion_id: u64,
+      caller: actor_id,
+      kind: ConversionKind,
+      input: u128,
+      output: u128,
+    };
+  }
+};
+

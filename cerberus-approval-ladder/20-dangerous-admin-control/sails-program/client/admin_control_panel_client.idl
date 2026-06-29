@@ -1,0 +1,41 @@
+type Claim = struct {
+  id: u64,
+  submitter: actor_id,
+  subject_hash: [u8, 32],
+  value: u128,
+  admin_overridden: bool,
+};
+
+type Error = enum {
+  Unauthorized,
+  EmptySubjectHash,
+  ClaimMissing,
+  ArithmeticOverflow,
+};
+
+constructor {
+  New : (admin: actor_id);
+};
+
+service AdminControlPanel {
+  AdminOverrideClaim : (claim_id: u64, new_value: u128) -> result (Claim, Error);
+  SubmitClaim : (subject_hash: [u8, 32], value: u128) -> result (Claim, Error);
+  query Admin : () -> actor_id;
+  query ClaimCount : () -> u64;
+  query GetClaim : (claim_id: u64) -> opt Claim;
+  query VerifyClaim : (claim_id: u64, subject_hash: [u8, 32], value: u128) -> bool;
+
+  events {
+    ClaimSubmitted: struct {
+      claim_id: u64,
+      submitter: actor_id,
+      value: u128,
+    };
+    ClaimOverridden: struct {
+      claim_id: u64,
+      admin: actor_id,
+      new_value: u128,
+    };
+  }
+};
+
