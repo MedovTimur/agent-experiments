@@ -1,6 +1,6 @@
-# DangerousAdminControl Sails Program
+# AdminControlPanel Sails Program
 
-Standard Sails workspace for DangerousAdminControl.
+Standard Sails workspace for AdminControlPanel.
 
 ## Methods
 

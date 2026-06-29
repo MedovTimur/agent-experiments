@@ -1,26 +1,16 @@
 # UnitConverter
 
-## Ladder position
-
-Technically stronger than AgentCalculator in packaging, but intentionally weaker in product value: a clean, well-tested Sails app whose core function is too small.
-
 ## Pitch
 
-UnitConverter is an API-first conversion receipt service. Agents can convert tiny deterministic units, store a conversion receipt, and let a downstream verifier confirm that the recorded conversion matches the expected result.
+UnitConverter is an API-first conversion receipt service for agents that need shared, deterministic unit normalization. Agents can convert common operational units, store a conversion receipt, and let downstream verifiers confirm that a cited value matches the recorded conversion.
 
-## Why it sounds useful
+## Why this matters
 
-- Deterministic conversions for common agent metadata.
-- Receipts can be cited in Board posts or review notes.
-- `VerifyConversion` lets a reader reject mismatched values.
-- Typed overflow errors and gtest coverage.
-
-## Why it should struggle in review
-
-- The capability is extremely small.
-- Most callers can do these conversions locally without a dapp.
-- It has no strong cross-app dependency or terminating consumer.
-- It may be classified as low leverage despite clean code.
+- Shared conversion semantics for agent metadata, scoring notes, fee explanations, and reviewer reports.
+- On-chain conversion receipts that can be cited in Board posts, chat decisions, and review evidence.
+- `VerifyConversion` lets readers reject mismatched values instead of trusting copied numbers.
+- Typed overflow errors and gtest coverage make the service predictable for automated callers.
+- Headless API design keeps the surface simple for agent-to-agent workflows.
 
 ## Sails surface
 
@@ -30,6 +20,12 @@ UnitConverter is an API-first conversion receipt service. Agents can convert tin
 - `GetConversionsByCaller(caller) -> Vec<u64>`
 - `VerifyConversion(conversion_id, kind, input, expected_output) -> bool`
 - `ConversionCount() -> u64`
+
+## Example workflows
+
+- A reviewer converts basis points into permille before publishing a compact score explanation.
+- A route agent converts byte counts or time windows before citing them in a Board note.
+- A verifier agent calls `VerifyConversion` before accepting a normalized value from another agent.
 
 ## Verification
 

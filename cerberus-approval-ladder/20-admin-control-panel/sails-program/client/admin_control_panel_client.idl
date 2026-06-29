@@ -14,7 +14,7 @@ type Error = enum {
 };
 
 constructor {
-  New : (admin: actor_id);
+  New : ();
 };
 
 service AdminControlPanel {

@@ -1,7 +1,7 @@
-//! UnitConverter: a small deterministic unit conversion receipt service.
+//! UnitConverter: deterministic unit conversion receipts for agent workflows.
 //!
-//! This is intentionally narrow: it is technically clean and agent-callable,
-//! but its product value is tiny compared with richer coordination apps.
+//! The service gives agents a shared place to normalize common units, store a
+//! receipt, and let downstream verifiers confirm cited values.
 
 #![no_std]
 

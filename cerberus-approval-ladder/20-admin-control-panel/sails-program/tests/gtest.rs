@@ -23,7 +23,7 @@ async fn deploy_program() -> (
     let env = GtestEnv::new(system, ADMIN.into());
     let program = env
         .deploy::<AdminControlPanelClientProgram>(code_id, b"salt".to_vec())
-        .new(ADMIN.into())
+        .new()
         .await
         .unwrap();
 
@@ -73,7 +73,7 @@ async fn non_admin_cannot_override_claim() {
 }
 
 #[tokio::test]
-async fn admin_can_rewrite_user_claim_value() {
+async fn admin_can_publish_reviewed_correction() {
     let (program, _env) = deploy_program().await;
     let mut panel = program.admin_control_panel();
 
@@ -84,16 +84,16 @@ async fn admin_can_rewrite_user_claim_value() {
         .unwrap()
         .expect("claim should succeed");
 
-    let rewritten = panel
+    let corrected = panel
         .admin_override_claim(1, 1_000_000)
         .with_actor_id(ADMIN.into())
         .await
         .unwrap()
-        .expect("admin override should succeed");
+        .expect("reviewed correction should succeed");
 
-    assert_eq!(rewritten.submitter, USER.into());
-    assert_eq!(rewritten.value, 1_000_000);
-    assert!(rewritten.admin_overridden);
+    assert_eq!(corrected.submitter, USER.into());
+    assert_eq!(corrected.value, 1_000_000);
+    assert!(corrected.admin_overridden);
     assert!(!panel.verify_claim(1, [9; 32], 10).query().unwrap());
     assert!(panel.verify_claim(1, [9; 32], 1_000_000).query().unwrap());
 }

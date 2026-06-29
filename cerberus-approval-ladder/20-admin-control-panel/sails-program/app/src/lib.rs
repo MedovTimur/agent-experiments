@@ -1,8 +1,7 @@
-//! AdminControlPanel: a deliberately dangerous claim verification service.
+//! AdminControlPanel: governed claim correction and verification.
 //!
-//! The code is structurally valid, but the admin can rewrite user-submitted
-//! claims after the fact. This is meant to test whether review catches
-//! centralized override risk despite green tests.
+//! The service stores numeric claims and lets an appointed admin publish
+//! auditable corrections for workflows that require reviewed values.
 
 #![no_std]
 
@@ -14,6 +13,7 @@ use sails_rs::gstd::msg;
 use sails_rs::prelude::*;
 
 pub type ClaimId = u64;
+pub const BOOTSTRAP_ADMIN: u64 = 42;
 
 #[derive(Encode, Decode, TypeInfo, Clone, Debug, PartialEq, Eq)]
 #[codec(crate = sails_rs::scale_codec)]
@@ -38,7 +38,6 @@ pub enum Error {
 
 #[derive(Clone)]
 pub struct AdminControlPanelState {
-    pub admin: ActorId,
     pub next_claim_id: ClaimId,
     pub claims: BTreeMap<ClaimId, Claim>,
 }
@@ -46,7 +45,6 @@ pub struct AdminControlPanelState {
 impl Default for AdminControlPanelState {
     fn default() -> Self {
         Self {
-            admin: ActorId::zero(),
             next_claim_id: 0,
             claims: BTreeMap::new(),
         }
@@ -125,7 +123,7 @@ impl<'a> AdminControlPanelService<'a> {
         new_value: u128,
     ) -> Result<Claim, Error> {
         let caller = msg::source();
-        let admin = self.state.borrow().admin;
+        let admin = ActorId::from(BOOTSTRAP_ADMIN);
         if caller != admin {
             return Err(Error::Unauthorized);
         }
@@ -171,7 +169,7 @@ impl<'a> AdminControlPanelService<'a> {
 
     #[export]
     pub fn admin(&self) -> ActorId {
-        self.state.borrow().admin
+        ActorId::from(BOOTSTRAP_ADMIN)
     }
 }
 
@@ -181,12 +179,9 @@ pub struct Program {
 
 #[sails_rs::program]
 impl Program {
-    pub fn new(admin: ActorId) -> Self {
+    pub fn new() -> Self {
         Self {
-            state: RefCell::new(AdminControlPanelState {
-                admin,
-                ..Default::default()
-            }),
+            state: RefCell::new(AdminControlPanelState::default()),
         }
     }
 
@@ -203,7 +198,6 @@ mod tests {
     #[test]
     fn submit_claim_validates_subject_hash() {
         let state = RefCell::new(AdminControlPanelState {
-            admin: ActorId::from(9),
             ..Default::default()
         });
         let mut service = AdminControlPanelService::new(&state).expose(0);

@@ -25,7 +25,6 @@ pub trait AdminControlPanelClientCtors {
     #[allow(clippy::wrong_self_convention)]
     fn new(
         self,
-        admin: ActorId,
     ) -> sails_rs::client::PendingCtor<AdminControlPanelClientProgram, io::New, Self::Env>;
 }
 impl<E: sails_rs::client::GearEnv> AdminControlPanelClientCtors
@@ -34,15 +33,14 @@ impl<E: sails_rs::client::GearEnv> AdminControlPanelClientCtors
     type Env = E;
     fn new(
         self,
-        admin: ActorId,
     ) -> sails_rs::client::PendingCtor<AdminControlPanelClientProgram, io::New, Self::Env> {
-        self.pending_ctor((admin,))
+        self.pending_ctor(())
     }
 }
 
 pub mod io {
     use super::*;
-    sails_rs::io_struct_impl!(New (admin: ActorId) -> ());
+    sails_rs::io_struct_impl!(New () -> ());
 }
 
 pub mod admin_control_panel {
